@@ -52,8 +52,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
   const { id, amount } = ownProps; //getting the remove item id
 
-  console.log(ownProps);
-
   return {
     remove: () => dispatch({ type: REMOVE, payload: { id } }),
     // using the arrow functuion because remove dispatch work only when remove button clicked.
