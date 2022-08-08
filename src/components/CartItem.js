@@ -1,6 +1,9 @@
 import React from "react";
+import { connect, Connect } from "react-redux";
+import { INCREASE, DECREASE, REMOVE } from "../actions";
 
-const CartItem = ({ img, title, price, amount }) => {
+const CartItem = ({ img, title, price, amount, remove }) => {
+  //remove is coming from redux store function in the bottom
   return (
     <div className="cart-item">
       <img src={img} alt={title} />
@@ -8,7 +11,9 @@ const CartItem = ({ img, title, price, amount }) => {
         <h4>{title}</h4>
         <h4 className="item-price">${price}</h4>
         {/* remove button */}
-        <button className="remove-btn">remove</button>
+        <button className="remove-btn" onClick={() => remove()}>
+          remove
+        </button>
       </div>
       <div>
         {/* increase amount */}
@@ -30,4 +35,16 @@ const CartItem = ({ img, title, price, amount }) => {
   );
 };
 
-export default CartItem;
+const mapDispatchToProps = (dispatch, ownProps) => {
+  //ownProps use karanne remove karaddi apita remove karana id eka hoyaganna ona e nisa  ownProps use karala e Item eke details ganna puluwan
+
+  const { id } = ownProps; //getting the remove item id
+
+  console.log(ownProps);
+  return { remove: () => dispatch({ type: REMOVE, payload: { id: id } }) };
+  // using the arrow functuion because remove dispatch work only when remove button clicked.
+};
+
+export default connect(null, mapDispatchToProps)(CartItem);
+//1st arrgument eka null karanne carContainer eken alredy prop ekak ewanawa cartItem ekata enisa aya store eken ganna ona ne, 2nd arrgument eka
+//use karanne dispatch eka access karanna

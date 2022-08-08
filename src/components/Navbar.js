@@ -1,8 +1,8 @@
 import React from "react";
-import { connect, Connect } from "react-redux";
+import { connect } from "react-redux";
 
 const Navbar = ({ amount }) => {
-  //this amount is coming from bottom of the commpont by method mapStateToProps
+  //this amount is coming from bottom of the commponent by method mapStateToProps
   return (
     <nav>
       <div className="nav-center">
