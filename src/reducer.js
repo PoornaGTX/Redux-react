@@ -46,7 +46,10 @@ function reducer(state, action) {
       (cartTotal, cartItem) => {
         //cartItem is current item and reduce is inbuilt method
         const { price, amount } = cartItem;
+        const itemTotal = price * amount;
+        cartTotal.total += itemTotal;
         cartTotal.amount += amount;
+
         return cartTotal;
       },
       {
@@ -55,6 +58,7 @@ function reducer(state, action) {
         //this values are the return value and we have to inialize the default value
       }
     );
+    total = parseFloat(total.toFixed(2)); //toFixed() is used to get the total with 2 decimal points and parseFloat() is used to convert String to Float
     return { ...state, total, amount };
   }
 
