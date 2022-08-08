@@ -5,6 +5,8 @@ import { CLEAR_CART, GET_TOTALS } from "../actions";
 
 const CartContainer = ({ cart = [], total, dispatch }) => {
   //mapStateToProps eken automa dispatch eka invoke karanwa
+  //cart=[] kiyanne prop eka empty arry ekata assign karnawa wage ekak newei, eka wenne ES6 eke apu defualt parameter kiyana eken, e kiyanne cart eka thibboth e values tika gannawa,
+  //thibbe neth nam eka emty arry ekak widihata gannawa.
 
   useEffect(() => {
     dispatch({ type: GET_TOTALS });
